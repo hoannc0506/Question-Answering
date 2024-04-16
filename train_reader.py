@@ -5,6 +5,7 @@ import torch
 from datasets import load_dataset
 from transformers import AutoTokenizer, AutoModelForQuestionAnswering
 from transformers import TrainingArguments, Trainer
+from data_utils import SquadDataProcessor
 from config import QAConfig
 import evaluate
 
@@ -17,10 +18,8 @@ tokenizer = AutoTokenizer.from_pretrained(cfg.MODEL_NAME)
 # define train params
 args = TrainingArguments(
     output_dir=cfg.ckpt_dir,
-    evaluation_strategy="steps",
-    save_strategy="steps",
-    save_steps=cfg.eval_steps,
-    eval_steps=cfg.eval_steps,
+    evaluation_strategy="no",
+    save_strategy="epoch",
     per_device_train_batch_size=cfg.train_batch_size,
     per_device_eval_batch_size=cfg.eval_batch_size,
     save_total_limit=cfg.save_total_limit,
@@ -28,7 +27,8 @@ args = TrainingArguments(
     learning_rate=cfg.learning_rate,
     weight_decay=cfg.weight_decay,
     fp16=cfg.fp16,
-    load_best_model_at_end=True
+    report_to="wandb", # wandb logging
+    run_name="qa-squadv2-distilbert" # wandb run name
 )
 
 if __name__ == "__main__":
@@ -45,8 +45,8 @@ if __name__ == "__main__":
     trainer = Trainer(
         model=model,
         args=args,
-        train_dataset=train_dataset,
-        eval_dataset=validation_dataset,
+        train_dataset=train_data,
+        eval_dataset=val_data,
         tokenizer=tokenizer
     )
 

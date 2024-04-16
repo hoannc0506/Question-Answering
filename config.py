@@ -24,5 +24,6 @@ class QAConfig(BaseModel):
     eval_steps: int = 1000
     ckpt_dir: str = "distilbert-finetuned-squadv2"
 
-    # Inference
-    beam_size: int = 5
+    # Evaluate
+    N_BEST: int = 20 
+    MAX_ANS_LENGTH: int = 30
