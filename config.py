@@ -3,7 +3,7 @@ from pydantic import BaseModel
 class QAConfig(BaseModel):
     # Model
     MODEL_NAME: str = "distilbert-base-uncased"
-
+    
     # document max tokens
     MAX_LENGTH: int = 384
     STRIDE: int = 128
