@@ -23,16 +23,15 @@
 - Visualize data preprocessing: `DatasetVisualize.ipynb`
 - Test Retriever: `Retriever.ipynb`
 - Evaluate Reader: `Evaluate.ipynb`
-- How to train reader:
+- Train extractive reader:
     - Modify `config.py`
     - Run `python train_reader.py`
     - Example train log: [train_log](https://wandb.ai/hoannc6/Open-Domain-QA)
 
 
 ## To-Do
+- [ ] Evaluate generative model on Eli5
 - [ ] Evaluate with LLM
-- [ ] LLM + FAISS
-- [ ] LLM + RAG
 
 
 ## Referneces
