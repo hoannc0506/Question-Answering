@@ -1,15 +1,12 @@
 # Question Answering
 
-## Datasets
-- Open Domain: [Squadv2.0](https://huggingface.co/datasets/rajpurkar/squad_v2)
-- Closed Domanin: [Python for Data Analysis](https://wesmckinney.com/book/)
-
 ## Pipelines and models
 ### Open Domain Question Answeing
 | Search Pipeline | Extractive QA model |
 | ----------- | ----------- |
 | ![e2e QA pipeline](docs/e2eQA.png) | ![e2e QA pipeline](docs/extractive_approach.png) |
 
+- Dataset: [Squadv2.0](https://huggingface.co/datasets/rajpurkar/squad_v2)
 - Reader: [qa-squadv2-distilbert](https://huggingface.co/hoannc0506/qa-squadv2-distilbert)
 - Retriever: [distilbert-base-uncased](https://huggingface.co/distilbert/distilbert-base-uncased)
 - Visualize data preprocessing: `DatasetVisualize.ipynb`
